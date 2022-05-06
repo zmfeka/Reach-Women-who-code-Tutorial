@@ -1,0 +1,22 @@
+[
+    {
+        "question":"Your play",
+        "answer1":"X",
+        "answer2":"O"
+    },
+    {
+        "question":"Your prediction of your opponents play",
+        "answer1":"X",
+        "answer2":"O"
+    },
+    {
+        "question":"What you want to tell your opponent your first play was",
+        "answer1":"X",
+        "answer2":"O"
+    },
+    {
+        "question":"What you think they'll tell you thier first play was",
+        "answer1":"X",
+        "answer2":"O"
+    }
+]

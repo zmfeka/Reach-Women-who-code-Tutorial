@@ -10,7 +10,7 @@ exports.Wrapper = class extends React.Component {
     const {content} = this.props;
     return (
       <div className="Deployer">
-        <h2>Deployer (Alice)</h2>
+        <h2>I doub thee, Deployer-Alice, henceforth</h2>
         {content}
       </div>
     );

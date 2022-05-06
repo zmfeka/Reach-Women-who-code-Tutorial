@@ -8,7 +8,7 @@ exports.Wrapper = class extends React.Component {
     const {content} = this.props;
     return (
       <div className="Attacher">
-        <h2>Attacher (Bob)</h2>
+        <h2>I doub thee, Attacher-Bob, henceforth</h2>
         {content}
       </div>
     );
@@ -21,12 +21,12 @@ exports.Attach = class extends React.Component {
     const {ctcInfoStr} = this.state || {};
     return (
       <div>
-        Please paste the contract info to attach to:
+        Please paste the contract info to from the Deployer-Alice's screen:
         <br />
         <textarea spellCheck="false"
           className='ContractInfo'
           onChange={(e) => this.setState({ctcInfoStr: e.currentTarget.value})}
-          placeholder='{}'
+          placeholder='...'
         />
         <br />
         <button
@@ -54,7 +54,7 @@ exports.AcceptTerms = class extends React.Component {
     const {disabled} = this.state || {};
     return (
       <div>
-        The terms of the game are:
+        You stand to win or lose:
         <br /> Wager: {wager} {standardUnit}
         <br />
         <button
@@ -63,7 +63,7 @@ exports.AcceptTerms = class extends React.Component {
             this.setState({disabled: true});
             parent.termsAccepted();
           }}
-        >Accept terms and pay wager</button>
+        >If you accept, click here!</button>
       </div>
     );
   }
@@ -74,7 +74,7 @@ exports.WaitingForTurn = class extends React.Component {
     return (
       <div>
         Waiting for the other player...
-        <br />Think about which move you want to play.
+        <br />Think about which move you want to play, and which moves they might play;).
       </div>
     );
   }

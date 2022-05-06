@@ -1,5 +1,9 @@
-import MyAlgoConnect from '@reach-sh/stdlib/ALGO_MyAlgoConnect';
-import React from 'react';
+// import { ALGO_WalletConnect as MyAlgoConnect } from '@Reach-sh/stdlib';
+// reach.setWalletFallback(reach.walletFallback({
+//   providerEnv: 'TestNet', MyAlgoConnect }));
+
+import { ALGO_MyAlgoConnect as MyAlgoConnect } from '@reach-sh/stdlib';
+import React, { useState } from 'react';
 import AppViews from './views/AppViews';
 import DeployerViews from './views/DeployerViews';
 import AttacherViews from './views/AttacherViews';
@@ -7,11 +11,17 @@ import {renderDOM, renderView} from './views/render';
 import './index.css';
 import * as backend from './build/index.main.mjs';
 import { loadStdlib } from '@reach-sh/stdlib';
-const reach = loadStdlib(process.env);
-reach.setWalletFallback(reach.walletFallback({
-    providerEnv: 'TestNet', MyAlgoConnect }));
+import PlayerViews from './views/PlayerViews';
+
+// const reach = loadStdlib(process.env);
+// reach.setWalletFallback(reach.walletFallback({
+//     providerEnv: 'TestNet', MyAlgoConnect }));
+const reach = loadStdlib('ALGO');
+reach.setWalletFallback(reach.walletFallback({ 
+  providerEnv: 'TestNet', MyAlgoConnect })); 
+// reach.setWalletFallback(reach.walletFallback({
+//   providerEnv: 'TestNet', MyAlgoConnect })); 
     
-const handToInt = {'ROCK': 0, 'PAPER': 1, 'SCISSORS': 2}
 const intToOutcome = ['Bob wins!', 'Draw!', 'Alice wins!'];
 const {standardUnit} = reach;
 const defaults = {defaultFundAmt: '10', defaultWager: '3', standardUnit};
@@ -43,14 +53,24 @@ class App extends React.Component {
 }
 
 class Player extends React.Component {
+    //const [myNum, theirNumber, speed, getValues ] = useState(0000, 1111, 333);
     random() { return reach.hasRandom.random(); }
     async getHand() {
+      const [returnedString, returnString ] = useState( 'returned' );
       const hand = await new Promise(resolveHandP => {
-        this.setState({view: 'GetHand', playable: true, resolveHandP});
+        this.setState({view: 'GetHand', playable: true, returnString});
+        //console.log(resolveHandP);
+        console.log({returnString})
+
       });
+
+      this.setState({view : 'Gethand'}).
       this.setState({view: 'WaitingForResults', hand});
-      return handToInt[hand];
+      this.useState.
+      console.log('this is hand'+hand);
+      return hand;
     }
+    //async getHand()
     seeOutcome(i) { this.setState({view: 'Done', outcome: intToOutcome[i]}); }
     informTimeout() { this.setState({view: 'Timeout'}); }
     playHand(hand) { this.state.resolveHandP(hand); }

@@ -8,7 +8,7 @@ exports.Wrapper = class extends React.Component {
     return (
       <div className="App">
         <header className="App-header" id="root">
-          <h1>Rock, Paper, Scissors</h1>
+          <h5>  Minding your your  </h5>
           {content}
         </header>
       </div>
@@ -58,19 +58,19 @@ exports.DeployerOrAttacher = class extends React.Component {
     const {parent} = this.props;
     return (
       <div>
-        Please select a role:
+        If you're here as a:
         <br />
         <p>
           <button
             onClick={() => parent.selectDeployer()}
           >Deployer</button>
-          <br /> Set the wager, deploy the contract.
+          <br /> Please set the wager and deploy the contract.
         </p>
         <p>
           <button
             onClick={() => parent.selectAttacher()}
           >Attacher</button>
-          <br /> Attach to the Deployer's contract.
+          <br /> Please attach to the Deployer's contract.
         </p>
       </div>
     );

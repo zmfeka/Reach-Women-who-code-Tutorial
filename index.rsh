@@ -1,25 +1,38 @@
 'reach 0.1';
 
-const [ isHand, ROCK, PAPER, SCISSORS ] = makeEnum(3);
+//import { number } from "prop-types";
+
+//const [ isHand, , PAPER, SCISSORS ] = makeEnum(3);
 const [ isOutcome, B_WINS, DRAW, A_WINS ] = makeEnum(3);
 
+function evaluateHand(handAlice, handBob){
+  if (handAlice[0] == handBob[1] && handBob[1] == handAlice[0]){
+    if (handAlice[2] < handBob[2]){
+      return 2;
+    } else {
+      return 0;
+    }
+  } else {
+    return 1;
+  }
+}
 const winner = (handAlice, handBob) =>
-  ((handAlice + (4 - handBob)) % 3);
+  (evaluateHand(handAlice, handBob));
 
-assert(winner(ROCK, PAPER) == B_WINS);
-assert(winner(PAPER, ROCK) == A_WINS);
-assert(winner(ROCK, ROCK) == DRAW);
+  assert(winner([1010,0000,2], [0000,1010,1]) == B_WINS);
+  // assert(winner(PAPER, ROCK) == A_WINS);
+  // assert(winner(ROCK, ROCK) == DRAW);
 
-forall(UInt, handAlice =>
-  forall(UInt, handBob =>
-    assert(isOutcome(winner(handAlice, handBob)))));
+// forall(UInt, handAlice =>
+//   forall(UInt, handBob =>
+//     assert(isOutcome(winner(handAlice, handBob)))));
 
-forall(UInt, (hand) =>
-  assert(winner(hand, hand) == DRAW));
+// forall(UInt, (hand) =>
+//   assert(winner(hand, hand) == DRAW));
 
 const Player = {
   ...hasRandom,
-  getHand: Fun([], UInt),
+  getHand: Fun([],Tuple(UInt, UInt, UInt)),
   seeOutcome: Fun([UInt], Null),
   informTimeout: Fun([], Null),
 };
